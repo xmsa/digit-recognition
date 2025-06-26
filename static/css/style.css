@@ -1,0 +1,28 @@
+.preview-img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  padding: 5px;
+}
+
+.image-box {
+  max-height: 400px;
+  overflow: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+#previewImage,
+#processedImage {
+  max-width: 100%; 
+  height: auto;    
+  border: 1px solid #ddd; 
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
