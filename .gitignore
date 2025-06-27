@@ -194,3 +194,5 @@ cython_debug/
 .cursorindexingignore
 .pre-commit-config.yaml
 pyproject.toml
+data/MNIST/
+models
