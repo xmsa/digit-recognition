@@ -17,7 +17,7 @@ function clearAllImages() {
 
 imageInput.addEventListener("change", () => {
   const file = imageInput.files[0];
-
+  
   if (!file) {
     clearAllImages();
     return;
@@ -44,17 +44,20 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
+  const model = document.querySelector('input[name="model"]:checked').value;
+
   processedColumn.classList.add("d-none");
   predictedText.textContent = "";
   processedImage.src = "";
 
   const formData = new FormData();
   formData.append("file", file);
+  formData.append("model", model);
 
   try {
     const response = await fetch("/predict", {
       method: "POST",
-      body: formData
+      body: formData,
     });
 
     if (!response.ok) {

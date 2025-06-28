@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Character Recognition</title>
-  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body class="bg-light p-4">
   <div class="container">
@@ -14,56 +14,75 @@
       <form id="uploadForm">
         <div class="mb-3">
           <label for="imageInput" class="form-label">Select Image:</label>
-          <input class="form-control" type="file" id="imageInput" accept="image/*" required>
+          <input
+            class="form-control"
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            required
+          />
         </div>
-        <!-- داخل فرم <form id="uploadForm"> قبل از دکمه Submit اضافه کن -->
-<div class="mb-3">
-  <label class="form-label">Select Model:</label>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="model" id="svmModel" value="SVM" checked>
-    <label class="form-check-label" for="svmModel">
-      SVM
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="model" id="mlpModel" value="MLP" disabled>
-    <label class="form-check-label" for="mlpModel">
-      MLP (Coming Soon)
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="model" id="cnnModel" value="CNN" disabled>
-    <label class="form-check-label" for="cnnModel">
-      CNN (Coming Soon)
-    </label>
-  </div>
-</div>
+
+        <div class="mb-3">
+          <label class="form-label">Select Model:</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="model"
+              id="svmModel"
+              value="SVM"
+              checked
+            />
+            <label class="form-check-label" for="svmModel">SVM</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="model"
+              id="mlpModel"
+              value="MLP"
+            />
+            <label class="form-check-label" for="mlpModel">MLP</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="model"
+              id="cnnModel"
+              value="CNN"
+            />
+            <label class="form-check-label" for="cnnModel">CNN</label>
+          </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
 
-    
     <div class="card p-3 mb-4 d-none" id="previewCard">
-  <h5 class="mb-3">Preview and Processed Image</h5>
-  <div class="row">
-    <!-- Original Image Column -->
-    <div class="col-md-6 text-center">
-      <p><strong>Original:</strong></p>
-      <img id="previewImage" alt="Preview">
+      <h5 class="mb-3">Preview and Processed Image</h5>
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <p><strong>Original:</strong></p>
+          <img id="previewImage" alt="Preview" />
+        </div>
+
+        <div
+          class="col-md-6 text-center d-none"
+          id="processedColumn"
+        >
+          <p><strong>Processed:</strong></p>
+          <img id="processedImage" class="mb-2" alt="Processed Image" />
+          <div>
+            <strong>Recognized Text:</strong> 
+            <span id="predictedText"></span>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Processed Image Column (initially hidden) -->
-    <div class="col-md-6 text-center d-none" id="processedColumn">
-      <p><strong>Processed:</strong></p>
-      <img id="processedImage" class="mb-2" alt="Processed Image">
-      <div><strong>Recognized Text:</strong> <span id="predictedText"></span></div>
-    </div>
-  </div>
-</div>
-
-
-
   </div>
 
   <script src="/static/js/bootstrap.bundle.min.js"></script>
