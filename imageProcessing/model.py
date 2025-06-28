@@ -1,9 +1,12 @@
 from typing import Any, Dict, List, Tuple
 
 import joblib
+import torch
 from PIL import Image
 from sklearn.linear_model import SGDClassifier
 
+from imageProcessing.cnn import MNIST_CNN
+from imageProcessing.mlp import MNIST_MLP
 from imageProcessing.utils import detect_characters, preocess_image
 
 
@@ -14,7 +17,23 @@ def load_model() -> Dict[str, Any]:
     Returns:
         Dict[str, Any]: A dictionary mapping model names to loaded model objects.
     """
-    clf = {"SVM": joblib.load("models/svm_model.joblib")}
+
+    def __load_model(model_name):
+        if model_name == "CNN":
+            model = MNIST_CNN()
+            model.load_state_dict(torch.load("models/mnist_cnn.pt", weights_only=True))
+            model.eval()
+        elif model_name == "MLP":
+            model = MNIST_MLP()
+            model.load_state_dict(torch.load("models/mnist_mlp.pt", weights_only=True))
+            model.eval()
+        return model
+
+    clf = {
+        "SVM": joblib.load("models/svm_model.joblib"),
+        "MLP": __load_model(model_name="MLP"),
+        "CNN": __load_model(model_name="CNN"),
+    }
     return clf
 
 
